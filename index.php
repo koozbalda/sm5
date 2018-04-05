@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(empty($_SESSION['success'])){
+if (empty($_SESSION['success'])) {
     header('Location: /login.php');
     exit();
 }
@@ -10,15 +10,15 @@ echo "<head>
 </head>";
 
 echo '<h2  align="center" style="color: #ff245c">Практика №5. </h2><br/><br/>';
-
-define('HOST', 'localhost');//константа
-define('USER', 'root');//константа
-define('PASSWORD', '');//константа
-define('DATABASE', 'phploc');//константа
-
-
-$connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
-
+//
+//define('HOST', 'localhost');//константа
+//define('USER', 'root');//константа
+//define('PASSWORD', '');//константа
+//define('DATABASE', 'phploc');//константа
+//
+//
+//$connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
+require_once('config.php');
 /**
  * *Если нет таблицы создать ее
  * если есть
@@ -102,14 +102,15 @@ function table_exist($connect, $searchtable = 'users')
  * @param $per_page
  * @return array
  */
-function getArrayFromTable($connect, $page, $per_page){
-    $begin=($page-1)*$per_page;
+function getArrayFromTable($connect, $page, $per_page)
+{
+    $begin = ($page - 1) * $per_page;
 
-    $sql="SELECT * FROM news LIMIT {$begin},{$per_page}"; //ASC
+    $sql = "SELECT * FROM news LIMIT {$begin},{$per_page}"; //ASC
 
-    $query=mysqli_query($connect,$sql);
-    while ($res[]=mysqli_fetch_assoc($query)){
-        $news=$res;
+    $query = mysqli_query($connect, $sql);
+    while ($res[] = mysqli_fetch_assoc($query)) {
+        $news = $res;
     }
 
     return $news;
@@ -121,16 +122,14 @@ function getArrayFromTable($connect, $page, $per_page){
  * @param string $name
  * @return mixed
  */
-function getCountRows($connect, $name='news'){
+function getCountRows($connect, $name = 'news')
+{
 
-    $query1="SELECT COUNT(*) AS kol from {$name}";
+    $query1 = "SELECT COUNT(*) AS kol from {$name}";
 
-    $res=mysqli_fetch_assoc(mysqli_query($connect,$query1));
+    $res = mysqli_fetch_assoc(mysqli_query($connect, $query1));
     return $res['kol'];
 }
-
-
-
 
 
 /*Проверяем есть ли такая таблица,
@@ -145,41 +144,55 @@ function getCountRows($connect, $name='news'){
 
 $per_page = empty($_GET['per-page']) ? 15 : $_GET['per-page'];
 
-$last_page = ceil(getCountRows($connect)/$per_page);
+$last_page = ceil(getCountRows($connect) / $per_page);
 
 $page = empty($_GET['page']) || $_GET['page'] > $last_page ? 1 : $_GET['page'];
 
 
-$requestArray=getArrayFromTable($connect,$page,$per_page);
+$requestArray = getArrayFromTable($connect, $page, $per_page);
 
-if(!empty($requestArray)){
-    $head_table=array_keys($requestArray[0]);
+if (!empty($requestArray)) {
+    $head_table = array_keys($requestArray[0]);
 }
 
 ?>
+<div class="text-right">
+    <?php
+    if ($_SESSION['role'] == 'admin') {
+        echo "<a href=\"cabinet.php\">В кабинет</a>";
+    }
+    ?>
+
+
+    <a href="checkIn.php">выйти</a>
+</div>
 <div>
     <table style="width: 100%" class="table-bordered">
-    <thead>
+        <thead>
 
-<?php
+        <?php
 
-if(!empty($head_table)){
-    foreach ($head_table as $name){
-        echo "<th>$name</th>";
-    }
-}
+        if (!empty($head_table)) {
+            foreach ($head_table as $name) {
+                echo "<th>$name</th>";
+            }
+        }
 
-?>
+        ?>
 
-    </thead>
+        </thead>
 
         <tbody>
         <?php
-        if(!empty($requestArray)) {
+        if (!empty($requestArray)) {
             foreach ($requestArray as $value) {
                 echo "<tr>";
                 foreach ($value as $key => $value) {
-                    echo "<td>" . $value . "</td>";
+                    if ($key == 'news_id') {
+                        echo "<td><a href='newsedit.php?news_id=" . $value . "'>edit</a></td>";
+                    } else {
+                        echo "<td>" . $value . "</td>";
+                    }
                 }
                 echo "</tr>";
             }
@@ -202,7 +215,8 @@ if(!empty($head_table)){
         </li>
         <li class="prev <?= ($page - 1) > 0 ? '1' : 'disabled' ?>">
 
-            <a href="/index.php?page=<?= ($page - 1) > 0 ? ($page - 1) : '1   ' ?>&amp;per-page=15" data-page="<?= ($page - 1) > 0 ? ($page - 1) : '1' ?>">
+            <a href="/index.php?page=<?= ($page - 1) > 0 ? ($page - 1) : '1   ' ?>&amp;per-page=15"
+               data-page="<?= ($page - 1) > 0 ? ($page - 1) : '1' ?>">
                 <span>&laquo</span>
             </a>
 
@@ -227,18 +241,18 @@ if(!empty($head_table)){
         ?>
         <li class="next <?= ($page + 1) <= $last_page ? '' : 'disabled' ?>">
             <a href="/index.php?page=<?= ($page + 1) <= $last_page ? $page + 1 : $last_page ?>&amp;per-page=15"
-                    data-page="1">
+               data-page="1">
                 &raquo
             </a>
         </li>
         <li class="next">
             <a href="/index.php?page=<?= !empty($last_page) ? $last_page : 1 ?>&amp;per-page=15"
-                            data-page="9">
+               data-page="9">
                 last
             </a>
         </li>
     </ul>
 </div>
-<a href="checkIn.php">выйти</a>
+
 
 

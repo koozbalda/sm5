@@ -16,27 +16,32 @@ session_start();
  * @return bool
  */
 
+//var_dump($_SESSION);
+//var_dump($_POST['edit']);
+//
+//exit();
+require_once('config.php');
 
 
-define('HOST', 'localhost');//константа
-define('USER', 'root');//константа
-define('PASSWORD', '');//константа
-define('DATABASE', 'phploc');//константа
-
-
-$connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
-
-
-function addInRegTable($connect){
-    $query21="INSERT INTO reg_users SET login='".$_POST['login']."',password ='".$_POST['password']."',email ='".$_POST['email']."'";
-mysqli_query($connect,$query21);
+function addInRegTable($connect)
+{
+    $query21 = "INSERT INTO reg_users SET login='" . $_POST['login'] . "',password ='" . $_POST['password'] . "',email ='" . $_POST['email'] . "'";
+    mysqli_query($connect, $query21);
 }
 
+function updateInRegTable($connect)
+{
+    $query21 = "UPDATE reg_users SET login='" . $_POST['login'] . "',password ='" . $_POST['password'] . "',email ='" . $_POST['email'] . "' WHERE `user_id`='{$_POST['user_id']}'";
+    mysqli_query($connect, $query21);
+}
 
 function uniqueDate($data, $what)
 {
-    $connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
+if(empty($_POST['edit'])) {
     $query1 = "SELECT COUNT(*) AS  kol FROM `reg_users` WHERE `" . $what . "`='" . $data . "'";
+}
+    $connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
+    $query1 = "SELECT COUNT(*) AS  kol FROM `reg_users` WHERE `user_id`!='{$_POST['user_id']}' AND `" . $what . "`='" . $data . "'";
 
     $res = mysqli_fetch_assoc(mysqli_query($connect, $query1));
 
@@ -59,11 +64,13 @@ function forName($name)
         $_SESSION['error']['login'] = "Поле Логин введено неверно, длинна должна быть больше 3х символов и менее 15";
         return false;
     }
-    if (!uniqueDate($name, 'login')) {
-        $_SESSION['error']['login'] = "Кто то уже использует этот логин";
-        return false;
-    }
 
+
+
+        if (!uniqueDate($name, 'login')) {
+            $_SESSION['error']['login'] = "Кто то уже использует этот логин";
+            return false;
+        }
 
     return true;
 }
@@ -94,7 +101,7 @@ function forEmail($email)
         $_SESSION['error']['email'] = "Поле email должно содержать @";
         return false;
 
-    }elseif(count($arr) !=2 ) {
+    } elseif (count($arr) != 2) {
         $_SESSION['error']['email'] = "Поле email заполнено не верно";
         return false;
     }
@@ -129,11 +136,11 @@ function forEmail($email)
  */
 function pswd($pswd)
 {
-    if(empty($_POST['password2'])){
+    if (empty($_POST['password2'])) {
         $_SESSION['error']['password'] = "Поле пароль2 не заданно";
         return false;
-    }else{
-        $pswd2=$_POST['password2'];
+    } else {
+        $pswd2 = $_POST['password2'];
     }
     //8 и более символов
     if (mb_strlen($pswd) < 7) {
@@ -155,7 +162,8 @@ function pswd($pswd)
 }
 
 //Function from send correct data or error message in session
-function session_prepared($index,$bool){
+function session_prepared($index, $bool)
+{
     if (!empty($_POST[$index]) && $bool) {
         $_SESSION[$index] = $_POST[$index];
         unset($_SESSION['error'][$index]);
@@ -167,26 +175,30 @@ function session_prepared($index,$bool){
 
 
 //part 1 check name
-session_prepared('login',forName($_POST['login']));
+session_prepared('login', forName($_POST['login']));
 
 //part 2 check email
-session_prepared('email',forEmail($_POST['email']));
+session_prepared('email', forEmail($_POST['email']));
 
 //part 3 check tel
 //session_prepared('tel',forTel($_POST['tel']));
 
 //part 4 check pswd
-session_prepared('password',pswd($_POST['password']));
+session_prepared('password', pswd($_POST['password']));
 
 unset($_SESSION['password']);
-unset( $_SESSION['registered']);
+unset($_SESSION['registered']);
 //if no error, we save email and login in session
 if (count($_SESSION['error']) == 0) {
 //    $_SESSION['registered']['email'][] = $_SESSION['email'];
 //    $_SESSION['registered']['login'][] = $_SESSION['login'];
 //    uniqueDate($_POST['login'],'login');
-    $_SESSION['registered']='your email registered '.$_POST['email'];
-    addInRegTable($connect);
+    $_SESSION['registered'] = 'your email registered ' . $_POST['email'];
+    if (!empty($_POST['edit'])) {
+        updateInRegTable($connect);
+    } else {
+        addInRegTable($connect);
+    }
 }
 
 //var_dump($_SESSION);
