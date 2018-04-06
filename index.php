@@ -156,15 +156,35 @@ if (!empty($requestArray)) {
 }
 
 ?>
-<div class="text-right">
+<div class="row">
+
+    <div class="col-md-3" style="padding-left: 3%">
+        <form action="newsedit.php" method="post">
+            <?php
+            if ($_SESSION['role'] == 'admin') {
+
+                echo "<button class='btn btn-success' name='createNews' value='true' href=\"newsedit.php\">Create News</button>";
+
+            }
+            ?>
+        </form>
+
+    </div>
+    <div class="col-md-7"></div>
+
+    <div class="col-md-2">
     <?php
     if ($_SESSION['role'] == 'admin') {
-        echo "<a href=\"cabinet.php\">В кабинет</a>";
+
+        echo "<a class='btn btn-info' href=\"cabinet.php\">В кабинет</a>";
+
     }
     ?>
 
 
-    <a href="checkIn.php">выйти</a>
+    <a class='btn btn-info' href="checkIn.php">выйти</a>
+
+</div>
 </div>
 <div>
     <table style="width: 100%" class="table-bordered">
@@ -189,7 +209,7 @@ if (!empty($requestArray)) {
                 echo "<tr>";
                 foreach ($value as $key => $value) {
                     if ($key == 'news_id') {
-                        echo "<td><a href='newsedit.php?news_id=" . $value . "'>edit</a></td>";
+                        echo "<td><a class='btn btn-warning' href='newsedit.php?news_id=" . $value . "'>edit</a></td>";
                     } else {
                         echo "<td>" . $value . "</td>";
                     }

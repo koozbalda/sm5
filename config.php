@@ -12,3 +12,4 @@ define('DATABASE', 'phploc');//константа
 
 
 $connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
+$infoConnect=new mysqli(HOST,USER,PASSWORD,'information_schema');
