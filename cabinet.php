@@ -18,6 +18,9 @@ $query="SELECT * from `reg_users` WHERE `login`='{$_SESSION['success']}'";
 $mysqli=new mysqli(HOST,USER,PASSWORD,DATABASE);
 
 ?>
+    <head>
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
 
     <form class="form-horizontal" action="/checkRegData.php" method="post">
 <?php
@@ -33,5 +36,5 @@ foreach($mysqli->query($query)->fetch_assoc() as $key=>$value){
 
 }
 
-echo " <input name='edit' type=\"submit\" value=\"edit\"/><br/>";
+echo " <input class='btn btn-warning' name='edit' type=\"submit\" value=\"edit\"/><br/>";
 

@@ -12,7 +12,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -71,16 +71,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cabinet.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cabinet.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cabinet.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="65" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="35" selection-end-column="65" />
+            <state relative-caret-position="170">
+              <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
               <folding>
-                <marker date="1522931720881" expanded="true" signature="228:268" ph="SELECT * fro... reg_users" />
-                <marker date="1522931720881" expanded="true" signature="228:269" ph="SELECT * fro... reg_users" />
-                <marker date="1522931720881" expanded="true" signature="228:290" ph="SELECT * fro... reg_users" />
-                <marker date="1522931720881" expanded="true" signature="228:292" ph="SELECT * fro... reg_users" />
+                <marker date="1523367147029" expanded="true" signature="228:268" ph="SELECT * fro... reg_users" />
+                <marker date="1523367147029" expanded="true" signature="228:269" ph="SELECT * fro... reg_users" />
+                <marker date="1523367147029" expanded="true" signature="228:290" ph="SELECT * fro... reg_users" />
+                <marker date="1523367147029" expanded="true" signature="228:292" ph="SELECT * fro... reg_users" />
               </folding>
             </state>
           </provider>
@@ -153,12 +153,12 @@
         <option value="$PROJECT_DIR$/unlogin.php" />
         <option value="$PROJECT_DIR$/checkIn.php" />
         <option value="$PROJECT_DIR$/registration.php" />
-        <option value="$PROJECT_DIR$/cabinet.php" />
         <option value="$PROJECT_DIR$/checkRegData.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/config.php" />
         <option value="$PROJECT_DIR$/checkNews.php" />
         <option value="$PROJECT_DIR$/newsedit.php" />
+        <option value="$PROJECT_DIR$/cabinet.php" />
       </list>
     </option>
   </component>
@@ -341,12 +341,12 @@
       <workItem from="1523018397404" duration="307000" />
       <workItem from="1523337724755" duration="72000" />
       <workItem from="1523344567749" duration="606000" />
-      <workItem from="1523349567428" duration="4754000" />
+      <workItem from="1523349567428" duration="5017000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163606000" />
+    <option name="totallyTimeSpent" value="163869000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -711,19 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cabinet.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="65" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="35" selection-end-column="65" />
-          <folding>
-            <marker date="1522931720881" expanded="true" signature="228:268" ph="SELECT * fro... reg_users" />
-            <marker date="1522931720881" expanded="true" signature="228:269" ph="SELECT * fro... reg_users" />
-            <marker date="1522931720881" expanded="true" signature="228:290" ph="SELECT * fro... reg_users" />
-            <marker date="1522931720881" expanded="true" signature="228:292" ph="SELECT * fro... reg_users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -762,6 +749,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <marker date="1523002183592" expanded="true" signature="120:181" ph="..." />
+            <marker date="1523002183592" expanded="true" signature="219:233" ph="..." />
+            <marker date="1523002183592" expanded="true" signature="657:802" ph="CREATE TABLE... users" />
+            <marker date="1523002183592" expanded="true" signature="820:863" ph="ALTER TABLE users... " />
+            <marker date="1523002183592" expanded="true" signature="881:945" ph="ALTER TABLE users... " />
+            <marker date="1523002183592" expanded="true" signature="1624:1700" ph="INSERT INTO users... " />
+            <marker date="1523002183592" expanded="true" signature="2472:2506" ph="SELECT * FRO... news" />
+            <marker date="1523002183592" expanded="true" signature="2804:2832" ph="SELECT COUNT... $" />
+            <marker date="1523002183592" expanded="true" signature="5074:5089" ph="..." />
+            <marker date="1523002183592" expanded="true" signature="5771:5929" ph="..." />
+            <marker date="1523002183592" expanded="true" signature="5987:6145" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newsedit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -781,22 +788,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/cabinet.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding>
-            <marker date="1523002183592" expanded="true" signature="120:181" ph="..." />
-            <marker date="1523002183592" expanded="true" signature="219:233" ph="..." />
-            <marker date="1523002183592" expanded="true" signature="657:802" ph="CREATE TABLE... users" />
-            <marker date="1523002183592" expanded="true" signature="820:863" ph="ALTER TABLE users... " />
-            <marker date="1523002183592" expanded="true" signature="881:945" ph="ALTER TABLE users... " />
-            <marker date="1523002183592" expanded="true" signature="1624:1700" ph="INSERT INTO users... " />
-            <marker date="1523002183592" expanded="true" signature="2472:2506" ph="SELECT * FRO... news" />
-            <marker date="1523002183592" expanded="true" signature="2804:2832" ph="SELECT COUNT... $" />
-            <marker date="1523002183592" expanded="true" signature="5074:5089" ph="..." />
-            <marker date="1523002183592" expanded="true" signature="5771:5929" ph="..." />
-            <marker date="1523002183592" expanded="true" signature="5987:6145" ph="..." />
+            <marker date="1523367147029" expanded="true" signature="228:268" ph="SELECT * fro... reg_users" />
+            <marker date="1523367147029" expanded="true" signature="228:269" ph="SELECT * fro... reg_users" />
+            <marker date="1523367147029" expanded="true" signature="228:290" ph="SELECT * fro... reg_users" />
+            <marker date="1523367147029" expanded="true" signature="228:292" ph="SELECT * fro... reg_users" />
           </folding>
         </state>
       </provider>
