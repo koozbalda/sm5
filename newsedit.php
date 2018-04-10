@@ -31,9 +31,16 @@ $res = mysqli_query($connect, $query);
 <?php
 
 
+
+
+if(!empty($_POST['news_error'])){
+    echo $_POST['news_error'];
+    echo "<br/>   ";
+}
+
 foreach ($res as $key => $value) {
     if ($value['Extra'] != 'auto_increment') {
-        $v = !empty($res1[$value['Field']]) ? $res1[$value['Field']] : '';
+        $v = !empty($res1[$value['Field']]) ? $res1[$value['Field']] :'' ;
         echo "<div>";
 
 //если поле ключ на другую таблицу
@@ -62,6 +69,12 @@ foreach ($res as $key => $value) {
             }
             echo "</div>";
         }
+    }else{
+        if($v==''&&!empty($_GET['news_id'])){
+            $v=$_GET['news_id'];
+            echo "<input style='width: 400px' class='form-horizontal' type='hidden' name='{$value['Field']}' value='{$v}'  required>";
+        };
+
     }
 }
 
@@ -70,9 +83,9 @@ foreach ($res as $key => $value) {
 
 if ($_POST['createNews'] == 'true') {
 
-    echo " <input class='btn btn-success' name='createNews' type=\"submit\" value=\"create\"/>";
+    echo " <input class='btn btn-success' name='News' type=\"submit\" value=\"create\"/>";
 } else {
 
-    echo " <input class='btn btn-primary' name='editNews' type=\"submit\" value=\"edit\"/>";
+    echo " <input class='btn btn-primary' name='News' type=\"submit\" value=\"edit\"/>";
 }
 echo " <a class='btn btn-primary' href='{$_SERVER['HTTP_REFERER']}' name='Return'>Return</a>";
